@@ -15,4 +15,6 @@ public interface Game {
     GameState getState();
 
     GameManager getManager();
+
+    void play();
 }

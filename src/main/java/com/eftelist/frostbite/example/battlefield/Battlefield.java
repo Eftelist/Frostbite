@@ -47,4 +47,9 @@ public class Battlefield implements Game {
     public GameManager getManager() {
         return this.manager;
     }
+
+    @Override
+    public void play() {
+        // TODO: Gametickable hier
+    }
 }
