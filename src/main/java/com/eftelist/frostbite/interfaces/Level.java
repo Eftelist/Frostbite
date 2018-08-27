@@ -11,4 +11,6 @@ public interface Level {
     Duration getLength();
 
     // TODO: Teams enzovoort
+
+    void tick(int currentTick);
 }

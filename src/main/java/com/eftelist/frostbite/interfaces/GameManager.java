@@ -27,4 +27,16 @@ public interface GameManager {
     Level getLevel(String id);
 
     void addLevel(String id, Level level);
+
+    // Teams
+
+    HashMap<Integer, Team> getTeams();
+
+    void addTeam(Team team);
+
+    Team getTeam(String id);
+
+    Team getTeamInt(int teamint);
+
+    void sortTeams();
 }

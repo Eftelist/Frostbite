@@ -22,4 +22,9 @@ public class BattlefieldLevel implements Level {
     public Duration getLength() {
         return new Duration(GameUnit.SECOND, 1);
     }
+
+    @Override
+    public void tick(int currentTick) {
+
+    }
 }

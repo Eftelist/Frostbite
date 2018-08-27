@@ -7,6 +7,9 @@ import com.eftelist.frostbite.example.battlefield.manager.BattlefieldManager;
 import com.eftelist.frostbite.interfaces.Game;
 import com.eftelist.frostbite.interfaces.GameManager;
 import com.eftelist.frostbite.interfaces.Level;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.Map;
 
 public class Battlefield implements Game {
 
@@ -31,6 +34,7 @@ public class Battlefield implements Game {
     @Override
     public void load() {
         this.state = GameState.LOADING;
+        this.getManager().sortTeams();
     }
 
     @Override
@@ -50,6 +54,28 @@ public class Battlefield implements Game {
 
     @Override
     public void play() {
-        // TODO: Gametickable hier
+        int delayInTicks = 0;
+
+        // Gamerunnable
+        for (Map.Entry<String, Level> levelEntry : getManager().getLevels().entrySet()) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    new BukkitRunnable() {
+                        private int currentTick;
+
+                        @Override
+                        public void run() {
+                            levelEntry.getValue().tick(currentTick);
+                            if (currentTick >= levelEntry.getValue().getLength().getTicks()) {
+                                cancel();
+                            }
+                            currentTick += 1;
+                        }
+                    }.runTaskTimer(FrostbiteCore.getInstance(), 0, 0);
+                }
+            }.runTaskLater(FrostbiteCore.getInstance(), delayInTicks);
+            delayInTicks += levelEntry.getValue().getLength().getTicks();
+        }
     }
 }
