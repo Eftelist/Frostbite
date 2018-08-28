@@ -19,6 +19,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void handleQuit(PlayerQuitEvent event) {
         if (loadedHandler()) {
+            getHandler().getServer().getPlayerManager().getPlayer(event.getPlayer().getUniqueId()).save();
             getHandler().getServer().getPlayerManager().remove(event.getPlayer());
         }
     }

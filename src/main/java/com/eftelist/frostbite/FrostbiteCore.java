@@ -1,20 +1,36 @@
 package com.eftelist.frostbite;
 
+import com.eftelist.frostbite.configuration.ConfigHandler;
 import com.eftelist.frostbite.handlers.FrostbiteHandler;
 import com.eftelist.frostbite.handlers.v1_12_2.Handler_1_12_2;
 import com.eftelist.frostbite.utils.ErrorUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
+import java.io.IOException;
 
 public class FrostbiteCore extends JavaPlugin {
     
     private static FrostbiteCore instance;
     private static FrostbiteHandler currentHandler;
+    private static ConfigHandler config, player;
 
     @Override
     public void onEnable() {
         instance = this;
         setupHandler();
+        setupConfig();
+    }
+
+    private void setupConfig() {
+        try {
+            player = new ConfigHandler(this, new File(this.getDataFolder(), "players.yml"), "players.yml");
+            config = new ConfigHandler(this, new File(this.getDataFolder(), "config.yml"), "config.yml");
+        } catch (IOException | InvalidConfigurationException e) {
+            ErrorUtil.print(e);
+        }
     }
 
     private void setupHandler() {
@@ -46,5 +62,13 @@ public class FrostbiteCore extends JavaPlugin {
 
     public static FrostbiteHandler getCurrentHandler() {
         return currentHandler;
+    }
+
+    public static ConfigHandler getConfigHandler() {
+        return config;
+    }
+
+    public static ConfigHandler getPlayerConfig() {
+        return player;
     }
 }
