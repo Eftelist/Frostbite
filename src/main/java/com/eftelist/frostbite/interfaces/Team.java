@@ -13,4 +13,6 @@ public interface Team {
     void addPlayer(FrostbitePlayer player);
 
     void removePlayer(FrostbitePlayer player);
+
+    void sendTitle(String message, String subtitle, int fadein, int stay, int fadeout);
 }
