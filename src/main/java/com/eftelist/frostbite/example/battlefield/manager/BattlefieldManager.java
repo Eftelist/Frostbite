@@ -2,6 +2,7 @@ package com.eftelist.frostbite.example.battlefield.manager;
 
 import com.eftelist.frostbite.interfaces.GameManager;
 import com.eftelist.frostbite.interfaces.Level;
+import com.eftelist.frostbite.interfaces.Lobby;
 import com.eftelist.frostbite.interfaces.Team;
 import com.eftelist.frostbite.managers.player.FrostbitePlayer;
 
@@ -11,21 +12,28 @@ import java.util.Map;
 
 public class BattlefieldManager implements GameManager {
 
+    private final Lobby lobby;
     private ArrayList<FrostbitePlayer> players = new ArrayList<>();
     private HashMap<String, Level> levels = new HashMap<>();
     private HashMap<Integer, Team> teams = new HashMap<>();
     private Integer teamindex = 0;
 
+    public BattlefieldManager(Lobby lobby) {
+        this.lobby = lobby;
+    }
+
     @Override
     public void addPlayer(FrostbitePlayer player) {
         if (!getPlayers().contains(player)) {
             getPlayers().add(player);
+            lobby.addPlayer(player);
         }
     }
 
     @Override
     public void removePlayer(FrostbitePlayer player) {
         getPlayers().remove(player);
+        lobby.removePlayer(player);
     }
 
     @Override
@@ -82,7 +90,7 @@ public class BattlefieldManager implements GameManager {
     @Override
     public void sortTeams() {
         //TODO: Recheck this function
-        int size = getPlayers().size();
+        int size = lobby.getPlayers().size();
         int div = getTeams().size();
         int playerPerTeam = size / div;
         int teamint = 0;

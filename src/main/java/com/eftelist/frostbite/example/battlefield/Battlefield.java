@@ -8,6 +8,7 @@ import com.eftelist.frostbite.example.battlefield.teams.BasicTeam;
 import com.eftelist.frostbite.interfaces.Game;
 import com.eftelist.frostbite.interfaces.GameManager;
 import com.eftelist.frostbite.interfaces.Level;
+import com.eftelist.frostbite.interfaces.Lobby;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Map;
@@ -16,6 +17,7 @@ public class Battlefield implements Game {
 
     private GameState state;
     private GameManager manager;
+    private BattlefieldLobby lobby;
 
     @Override
     public String getID() {
@@ -25,11 +27,11 @@ public class Battlefield implements Game {
     @Override
     public void setup() {
         this.state = GameState.SETUP;
-        BattlefieldManager man = new BattlefieldManager();
+        this.lobby = new BattlefieldLobby(this);
+        BattlefieldManager man = new BattlefieldManager(lobby);
         this.manager = man;
         Level level1 = new BattlefieldLevel(man);
         this.manager.addLevel(level1.getID(), level1);
-
         //add teams
         this.manager.addTeam(new BasicTeam("German"));
         this.manager.addTeam(new BasicTeam("English"));
@@ -59,6 +61,11 @@ public class Battlefield implements Game {
     @Override
     public GameManager getManager() {
         return this.manager;
+    }
+
+    @Override
+    public Lobby getLobby() {
+        return lobby;
     }
 
     @Override

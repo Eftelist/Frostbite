@@ -16,5 +16,7 @@ public interface Game {
 
     GameManager getManager();
 
+    Lobby getLobby();
+
     void play();
 }

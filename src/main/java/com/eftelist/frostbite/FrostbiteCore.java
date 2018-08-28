@@ -27,11 +27,7 @@ public class FrostbiteCore extends JavaPlugin {
         getLogger().info("Your server is running version " + server_version);
         if (server_version.equals("v1_12_R1")) {
             currentHandler = new Handler_1_12_2();
-            boolean loaded = currentHandler.load();
-            if (!loaded) {
-                getLogger().info("Handler failed to load");
-                Bukkit.getPluginManager().disablePlugin(this);
-            }
+            currentHandler.load();
         } else {
             getLogger().info("Unsupported version found!");
             Bukkit.getPluginManager().disablePlugin(this);
