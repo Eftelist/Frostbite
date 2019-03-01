@@ -1,4 +1,4 @@
-package com.eftelist.frostbite.example.battlefield.teams;
+package com.eftelist.frostbite.objects;
 
 import com.eftelist.frostbite.interfaces.Team;
 import com.eftelist.frostbite.managers.player.FrostbitePlayer;

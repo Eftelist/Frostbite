@@ -4,11 +4,11 @@ import com.eftelist.frostbite.FrostbiteCore;
 import com.eftelist.frostbite.enums.GameState;
 import com.eftelist.frostbite.example.battlefield.levels.BattlefieldLevel;
 import com.eftelist.frostbite.example.battlefield.manager.BattlefieldManager;
-import com.eftelist.frostbite.example.battlefield.teams.BasicTeam;
 import com.eftelist.frostbite.interfaces.Game;
 import com.eftelist.frostbite.interfaces.GameManager;
 import com.eftelist.frostbite.interfaces.Level;
 import com.eftelist.frostbite.interfaces.Lobby;
+import com.eftelist.frostbite.objects.BasicTeam;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Map;
@@ -45,7 +45,6 @@ public class Battlefield implements Game {
         this.state = GameState.LOADING;
         this.getManager().sortTeams();
         this.state = GameState.ENABLED;
-        this.play();
     }
 
     @Override
