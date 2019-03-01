@@ -5,11 +5,9 @@ import com.eftelist.frostbite.handlers.FrostbiteHandler;
 import com.eftelist.frostbite.handlers.v1_12_2.Handler_1_12_2;
 import com.eftelist.frostbite.utils.ErrorUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 
 public class FrostbiteCore extends JavaPlugin {
     
@@ -28,7 +26,7 @@ public class FrostbiteCore extends JavaPlugin {
         try {
             player = new ConfigHandler(this, new File(this.getDataFolder(), "players.yml"), "players.yml");
             config = new ConfigHandler(this, new File(this.getDataFolder(), "config.yml"), "config.yml");
-        } catch (IOException | InvalidConfigurationException e) {
+        } catch (Exception e) {
             ErrorUtil.print(e);
         }
     }
