@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Frostbite.iml" filepath="$PROJECT_DIR$/.idea/Frostbite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.iml" filepath="$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.test.iml" filepath="$PROJECT_DIR$/.idea/modules/borderstorm/Frostbite.borderstorm.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Frostbite.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Frostbite.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Frostbite.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Frostbite.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Frostbite.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Frostbite.core.test.iml" />
+    </modules>
+  </component>
+</project>
